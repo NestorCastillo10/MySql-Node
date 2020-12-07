@@ -8,6 +8,8 @@ const myPassword = "pass";
 const database = "christmas_2020";
 const table = "elves";
 
+app.set("view engine", "ejs"); // set the view engine to ejs
+
 //port
 app.listen(3050, () => {
   console.log("HO HO HO!! App listening on port 3050");
@@ -15,7 +17,7 @@ app.listen(3050, () => {
 
 //routes
 app.get("/", (req, res) => {
-  res.send("Landing page!");
+  res.render("landingPage");
 });
 
 app.get("/addelf", (req, res) => {
