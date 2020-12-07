@@ -17,7 +17,7 @@ app.listen(3050, () => {
 
 //routes
 app.get("/", (req, res) => {
-  res.render("landingPage");
+  res.render("landingPage", { data: 42 });
 });
 
 app.get("/addelf", (req, res) => {
