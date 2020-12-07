@@ -3,12 +3,14 @@ const express = require("express");
 const app = express();
 const mySql = require("mysql");
 const faker = require("faker");
+const bodyParser = require("body-parser");
 
 const myPassword = "pass";
 const database = "christmas_2020";
 const table = "elves";
 
 app.set("view engine", "ejs"); // set the view engine to ejs
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //port
 app.listen(3050, () => {
