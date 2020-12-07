@@ -2,6 +2,7 @@
 const express = require("express");
 const app = express();
 const mySql = require("mysql");
+const faker = require("faker");
 
 const myPassword = "pass";
 const database = "christmas_2020";
@@ -48,3 +49,19 @@ db.query(q, (error) => {
   if (error) throw error;
   console.log("...and the table!");
 });
+
+//database seeding
+let people = [];
+
+for (let i = 0; i < 358; i++) {
+  people.push([faker.internet.email(), faker.date.past()]);
+}
+
+db.query(
+  `INSERT INTO ${database}.${table} (email, created_at) VALUES ?`,
+  [people],
+  (error) => {
+    if (error) throw error;
+    console.log("...database seeding completed successfully! Ho Ho Ho!");
+  }
+);
