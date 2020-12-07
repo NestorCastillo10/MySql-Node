@@ -29,8 +29,13 @@ app.get("/", (req, res) => {
   );
 });
 
-app.get("/addelf", (req, res) => {
-  res.send("add elf");
+app.post("/addelf", (req, res) => {
+  let person = { email: req.body.email };
+  db.query(`INSERT INTO ${database}.${table} SET ?`, person, (error) => {
+    if (error) throw error;
+    res.redirect("/");
+    console.log("Elf is added");
+  });
 });
 
 // our db connections
