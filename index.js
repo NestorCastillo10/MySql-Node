@@ -35,6 +35,7 @@ app.post("/addelf", (req, res) => {
     if (error) throw error;
     res.redirect("/");
     console.log("Elf is added");
+    dataCheck();
   });
 });
 
@@ -81,3 +82,28 @@ db.query(
     console.log("...database seeding completed successfully! Ho Ho Ho!");
   }
 );
+
+//delete bad entries from database
+let dataCheck = () => {
+  db.query(
+    `DELETE FROM ${database}.${table} WHERE email NOT LIKE '%@%.%';`,
+    (error) => {
+      if (error) throw error;
+    }
+  );
+
+  db.query(`USE ${database};`, (error) => {
+    if (error) throw error;
+  });
+
+  db.query(
+    `DELETE t1 FROM ${database}.${table} t1 INNER JOIN ${database}.${table} t2 WHERE t1.id < t2.id AND t1.email = t2.email;`,
+    (error) => {
+      if (error) throw error;
+    }
+  );
+
+  console.log(
+    "delete bad entries from database... duplicates and invalid data"
+  );
+};
