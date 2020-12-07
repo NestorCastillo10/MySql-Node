@@ -17,7 +17,14 @@ app.listen(3050, () => {
 
 //routes
 app.get("/", (req, res) => {
-  res.render("landingPage", { data: 42 });
+  db.query(
+    `SELECT COUNT(DISTINCT email) AS count FROM ${database}.${table} WHERE email LIKE '%@%.%'`,
+    (error, results) => {
+      if (error) throw error;
+      let msg = results[0].count;
+      res.render("landingPage", { data: msg });
+    }
+  );
 });
 
 app.get("/addelf", (req, res) => {
