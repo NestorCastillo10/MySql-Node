@@ -12,8 +12,6 @@
     -  MySql 
     
 
-### `Features`
-
 
 ### `How to install`
 
@@ -30,7 +28,7 @@ git clone https://github.com/NestorCastillo10/MySql-Node.git
 1.  Download repository
 2.  Uncompress to your desired directory
 
-### Prepare your local server SQL database server before installing the application.
+### Prepare your local SQL database server before installing the application.
 
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'pass'; 
