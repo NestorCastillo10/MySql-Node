@@ -1,4 +1,4 @@
-## RESTful Web App with Node.js, Express, and MySql.
+## REST Web App with Node.js, Express, and MySql.
 
 ##### This is a simple web application to demonstrate my knowledge of SQL and JavaScript, and understanding of client-server communication.
 ---
@@ -30,10 +30,8 @@ git clone https://github.com/NestorCastillo10/MySql-Node.git
 1.  Download repository
 2.  Uncompress to your desired directory
 
-### Important!! Start the SQL database server before installing the application.
+### Prepare your local server SQL database server before installing the application.
 
-- If you have this error "NodeJS MySQL Client does not support authentication protocol" during app installation,
-...execute the following queries in MYSQL Workbench.
 ```bash
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'pass'; 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'pass';
